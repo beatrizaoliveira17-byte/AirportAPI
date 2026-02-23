@@ -10,17 +10,28 @@ import org.springframework.stereotype.Service;
  *
  * @author digma
  */
-
-    
-    @Service
+@Service
 public class AirportService {
-        
+
     @Autowired
     private AirportRepository airportRepository;
-   
-    public List<Airport>findAll(){
-       
-        return airportRepository.findAll();
-    }
-}
 
+    public List<Airport> findAll() {
+
+        return airportRepository.findAll();
+
+    }
+
+    /**
+     * Retorna DTO Airports filtrado por cidade.
+     *
+     * @param city
+     * @return
+     */
+    public List<Airport> findByCity(String city) {
+        List<Airport> result = airportRepository.findByCityIgnoreCase(city);
+        return result;
+    }
+    
+    
+}
