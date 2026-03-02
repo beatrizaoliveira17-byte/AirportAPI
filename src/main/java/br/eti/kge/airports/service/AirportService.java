@@ -23,19 +23,14 @@ public class AirportService {
 
     }
 
-    /**
-     * Retorna DTO Airports filtrado por cuntry (pais).
-     *
-     * @param country
+     /**
+     * Retorna DTO Airport por iataCode
+     * @param iataCode
      * @return
      */
-    public List<AirportMinDTO> findByCountry(String country) {
-        List<Airport> resultAirport = airportRepository.findByCountryIgnoreCase(country);
-        
-         List<AirportMinDTO> resultDTO = resultAirport.stream().map(x -> new AirportMinDTO(x)).toList();
-         
-         return resultDTO;
+    public Airport findByIataCode(String iataCode) {
+        Airport result = airportRepository.findByIataCode(iataCode);
+        return result;
     }
-    
     
 }

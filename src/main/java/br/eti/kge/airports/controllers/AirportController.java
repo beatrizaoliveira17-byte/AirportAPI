@@ -42,12 +42,12 @@ public class AirportController {
      *
      */
 
-    @GetMapping("/country/{countryName}")
-    public ResponseEntity<List<AirportMinDTO>> findByCountryIgnoreCase(@PathVariable String countryName) {
-        List<AirportMinDTO> result = airportService.findByCountry(countryName);
+    @GetMapping("/iatacode/{iataCode}")
+    public ResponseEntity<Airport> findByIataCode(@PathVariable String iataCode) {
+        Airport result = airportService.findByIataCode(iataCode);
 
-        if (result.isEmpty()) {
-            // Ops.. Lista vazia
+        if (result == null) {
+            // Ops.. Aeroporto vazio
             // NotFound devolve 404
 
             return ResponseEntity.notFound().build();
